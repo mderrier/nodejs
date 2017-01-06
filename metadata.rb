@@ -11,7 +11,7 @@ version '2.4.4'
 
 depends 'yum-epel'
 depends 'build-essential', '= 3.2.0'
-depends 'ark'
+depends 'ark', '= 1.2.0'
 depends 'apt', '>= 2.9.1'
 depends 'homebrew'
 
