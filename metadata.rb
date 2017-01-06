@@ -10,7 +10,7 @@ chef_version '>= 11.0' if respond_to?(:chef_version)
 version '3.0.0'
 
 depends 'yum-epel'
-depends 'build-essential'
+depends 'build-essential', '= 6.0.5'
 depends 'ark'
 depends 'apt', '>= 2.9.1'
 depends 'homebrew'
