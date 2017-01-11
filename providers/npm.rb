@@ -5,7 +5,7 @@ use_inline_resources
 action :install do
   execute "install NPM package #{new_resource.name}" do
     cwd new_resource.path
-    command "npm install #{npm_options} && ln -s /usr/local/nodejs-binary/bin/#{new_resource.name} /usr/local/sbin/#{new_resource.name}"
+    command "npm install #{npm_options} && ln -fs /usr/local/nodejs-binary/bin/#{new_resource.name} /usr/local/sbin/#{new_resource.name}"
     user new_resource.user
     group new_resource.group
     environment npm_env_vars
