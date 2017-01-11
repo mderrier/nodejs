@@ -5,11 +5,10 @@ use_inline_resources
 action :install do
   execute "install NPM package #{new_resource.name}" do
     cwd new_resource.path
-    command "npm install #{npm_options}"
+    command "npm install #{npm_options} && ln -s /usr/local/nodejs-binary/bin/#{new_resource.name} /usr/local/sbin/#{new_resource.name}"
     user new_resource.user
     group new_resource.group
     environment npm_env_vars
-    environment 'PATH' => "#{ENV['PATH']}:/usr/local/nodejs-binary/bin"
     not_if { package_installed? }
   end
 end
@@ -30,6 +29,7 @@ def npm_env_vars
   env_vars['HOME'] = ::Dir.home(new_resource.user) if new_resource.user
   env_vars['USER'] = new_resource.user if new_resource.user
   env_vars['NPM_TOKEN'] = new_resource.npm_token if new_resource.npm_token
+  env_vars['PATH'] => "#{ENV['PATH']}:/usr/local/nodejs-binary/bin"
 end
 
 def package_installed?
