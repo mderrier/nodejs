@@ -21,5 +21,3 @@
 include_recipe 'nodejs::install'
 include_recipe 'nodejs::npm'
 include_recipe 'nodejs::npm_packages'
-
-execute "export PATH=$PATH:/usr/local/nodejs-binary/bin"
